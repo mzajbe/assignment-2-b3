@@ -1,7 +1,7 @@
 import slugify from "slugify";
-import { Product as Product } from "./product.model";
+import {  Product as Product } from "./product.model";
 import { compareAsc, format } from "date-fns";
-import { TProduct } from "./product.interface";
+import {  TProduct } from "./product.interface";
 
 const createProduct = async(payload:TProduct)=>{
 
@@ -28,11 +28,15 @@ const getProductById = async(id:string)=>{
 
 
 
+
+
 export const productServices = {
     createProduct,
     getAllProducts,
     getProductById,
 }
+
+
 
 
 

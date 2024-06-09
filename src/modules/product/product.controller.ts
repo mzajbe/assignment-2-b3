@@ -57,8 +57,12 @@ const getProductById = async (req:Request,res:Response)=>{
 
 
 
+
+
 export const productControllers = {
     createProduct: createProduct,
     getAllProducts,
     getProductById: getProductById,
 }
+
+

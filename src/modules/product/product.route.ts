@@ -3,8 +3,13 @@ import { productControllers } from './product.controller';
 
 const router = express.Router()
 
+
+//product
 router.post("/",productControllers.createProduct);
-router.get("/:movieId",productControllers.getProductById);
+router.get("/:productId",productControllers.getProductById);
 router.get("/",productControllers.getAllProducts);
+
+
+
 
 export const productRouter = router;
