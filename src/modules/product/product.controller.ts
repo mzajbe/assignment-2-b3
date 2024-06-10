@@ -15,23 +15,42 @@ const createProduct = async (req: Request, res: Response) => {
 
 
 
-const getAllProducts = async (req:Request,res:Response)=>{
-    try{
-        const result = await productServices.getAllProducts();
+// const getAllProducts = async (req:Request,res:Response)=>{
+//     try{
+//         const result = await productServices.getAllProducts();
 
-        res.status(200).json({
-            success:true,
-            message:"Products are fetched successfully!",
-            data:result,
-        });
-    }catch(err:any){
-        res.status(500).json({
-            success:false,
-            message:"could not fetch products!",
-            error:err,
-        });
+//         res.status(200).json({
+//             success:true,
+//             message:"Products are fetched successfully!",
+//             data:result,
+//         });
+//     }catch(err:any){
+//         res.status(500).json({
+//             success:false,
+//             message:"could not fetch products!",
+//             error:err,
+//         });
+//     }
+// }
+
+const getAllProducts = async (req: Request, res: Response) => {
+    try {
+      const searchTerm = req.query.searchTerm as string;
+      const result = await productServices.getAllProducts(searchTerm);
+  
+      res.status(200).json({
+        success: true,
+        message: searchTerm ? `Products matching search term '${searchTerm}' fetched successfully!` : "Products are fetched successfully!",
+        data: result,
+      });
+    } catch (err: any) {
+      res.status(500).json({
+        success: false,
+        message: "Could not fetch products!",
+        error: err,
+      });
     }
-}
+  }
 
 
 

@@ -14,10 +14,16 @@ const createProduct = async(payload:TProduct)=>{
     const result = await Product.create(payload);
     return result;
 };
-const getAllProducts = async()=>{
-    const result = await Product.find();
+// const getAllProducts = async()=>{
+//     const result = await Product.find();
+//     return result;
+// };
+
+const getAllProducts = async (searchTerm?: string) => {
+    const query = searchTerm ? { name: new RegExp(searchTerm, 'i') } : {};
+    const result = await Product.find(query);
     return result;
-};
+  };
 const getProductById = async(id:string)=>{
     const result = await Product.findById(id);
     return result;
