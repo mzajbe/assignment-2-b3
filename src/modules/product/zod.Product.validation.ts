@@ -22,4 +22,5 @@ const productSchema = z.object({
   variants: z.array(variantSchema).nonempty("At least one variant is required"),
   inventory: inventorySchema.optional()
 });
+
 export default  productSchema ;

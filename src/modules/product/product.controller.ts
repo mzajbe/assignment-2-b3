@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { productServices } from "./product.service";
-import productSchema from "./zod.validation";
+import productSchema from "./zod.Product.validation";
 
 const createProduct = async (req: Request, res: Response) => {
   try {
