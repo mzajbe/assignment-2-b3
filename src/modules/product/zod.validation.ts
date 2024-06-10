@@ -15,11 +15,11 @@ const inventorySchema = z.object({
 // Define the Product schema
 const productSchema = z.object({
   name: z.string().min(1, "Name is required").max(20, "Name cannot exceed 20 characters"),
-  description: z.string().min(1, "Description is required"),
+  description: z.string().min(1, "Description is required").max(250,"Name cannot exceed 20 characters"),
   price: z.number().min(0, "Price must be a positive number"),
   category: z.string().min(1, "Category is required"),
   tags: z.array(z.string().min(1, "Tag cannot be empty")).nonempty("Tags are required"),
   variants: z.array(variantSchema).nonempty("At least one variant is required"),
-  inventory: inventorySchema.optional() // Make inventory optional to match the interface
+  inventory: inventorySchema.optional()
 });
 export default  productSchema ;

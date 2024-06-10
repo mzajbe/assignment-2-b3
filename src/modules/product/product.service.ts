@@ -5,19 +5,9 @@ import {  TProduct } from "./product.interface";
 
 const createProduct = async(payload:TProduct)=>{
 
-    // const date = format(payload.releaseDate,"dd-MM-yyyy");
-    // //creating slug
-    // const slug = slugify(`${payload.title}-${date}`);
-
-
-    // const result = await Movie.create({...payload,slug});
     const result = await Product.create(payload);
     return result;
 };
-// const getAllProducts = async()=>{
-//     const result = await Product.find();
-//     return result;
-// };
 
 const getAllProducts = async (searchTerm?: string) => {
     const query = searchTerm ? { name: new RegExp(searchTerm, 'i') } : {};
