@@ -22,23 +22,13 @@ const getProductById = async(id:string)=>{
     const result = await Product.findById(id);
     return result;
 };
-
-
-
-
-
-
-
-
+const updateProduct = async (id: string, payload: TProduct) => {
+    const result = await Product.findByIdAndUpdate(id, payload, { new: true });
+    return result;
+  };
 export const productServices = {
     createProduct,
     getAllProducts,
     getProductById,
+    updateProduct,
 }
-
-
-
-
-
-
-//interface => schema => model => query

@@ -36,8 +36,31 @@ const createOrder = async (req: Request, res: Response) => {
 }
 
 
+const getOrderByEmail = async (req:Request,res:Response)=>{
+  try{
+      const {orderEmail: orderEmail}=req.params;
+      const result = await orderServices.getOrderByEmail(orderEmail);
+
+      res.status(200).json({
+          success:true,
+          message:"Product are fetched successfully!",
+          data:result,
+      });
+  }catch(err:any){
+      res.status(500).json({
+          success:false,
+          message:"could not fetch Product!",
+          error:err,
+      });
+  }
+}
+
+
+
+
   export const orderControllers = {
     createOrder,
     getAllOrders,
+    getOrderByEmail,
 
 }
