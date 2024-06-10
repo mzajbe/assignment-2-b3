@@ -1,15 +1,43 @@
 import { Request, Response } from "express";
 import { productServices } from "./product.service";
+// import productSchema from "./zod.validation"
+import productSchema from "./zod.validation";
+
+// const createProduct = async (req: Request, res: Response) => {
+//   const productData = req.body;
+//   //zod validation data
+//   // const zodValidationData = productSchema.parse(productData);
+//   const zodValidation = productSchema.parse(productData);
+//   const result = await productServices.createProduct(zodValidation);
+
+//   res.json({
+//     success: true,
+//     message: "product is created successfully!",
+//     data: result,
+//   });
+// };
 
 const createProduct = async (req: Request, res: Response) => {
-  const productData = req.body;
-  const result = await productServices.createProduct(productData);
+  try {
+    // Validate the request body against the schema
+    const productData = req.body;
+    const zodValidationData = productSchema.parse(productData);
 
-  res.json({
-    success: true,
-    message: "product is created successfully!",
-    data: result,
-  });
+    // Proceed with creating the product
+    const result = await productServices.createProduct(zodValidationData);
+
+    res.json({
+      success: true,
+      message: "Product is created successfully!",
+      data: result,
+    });
+  } catch (err: any) {
+    res.status(400).json({
+      success: false,
+      message: err.message,
+      error: err.errors,  // Zod errors are in `errors` property
+    });
+  }
 };
 
 
