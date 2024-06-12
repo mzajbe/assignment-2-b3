@@ -12,6 +12,6 @@ app.use(express_1.default.json());
 app.use("/api/products", product_route_1.productRouter);
 app.use("/api/orders", order_route_1.orderRouter);
 app.get('/', (req, res) => {
-    res.send('Hello next level!');
+    res.send('assignment-2-b3');
 });
 exports.default = app;
