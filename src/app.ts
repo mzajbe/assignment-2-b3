@@ -14,7 +14,7 @@ app.use("/api/orders",orderRouter);
 
 
 app.get('/', (req:Request, res:Response) => {
-  res.send('Hello next level!')
+  res.send('assignment-2-b3')
 })
 
 export default app;
